@@ -1,0 +1,194 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, #67b26f, #4ca2cd);
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background-color: #ffffff;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    text-align: center;
+    padding: 40px 20px;
+    transition: transform 0.3s ease;
+}
+
+.container:hover {
+    transform: translateY(-10px);
+}
+
+header h1 {
+    font-size: 2.8rem;
+    color: #4ca2cd;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.form-section h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input[type="file"] {
+    padding: 12px;
+    border: 2px solid #4ca2cd;
+    border-radius: 8px;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    background-color: #f4f4f9;
+    width: 100%;
+    max-width: 400px;
+    transition: border 0.3s ease;
+}
+
+input[type="file"]:hover {
+    border-color: #67b26f;
+}
+
+button {
+    background-color: #4ca2cd;
+    color: white;
+    padding: 12px 40px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #67b26f;
+    transform: scale(1.05);
+}
+
+/* Results Section */
+.results-section {
+    display: none; /* Initially hidden */
+    margin-top: 40px;
+}
+
+.results-section h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#labelsList {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+#labelsList li {
+    margin-bottom: 20px;
+}
+
+#previewImage {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+
+/* Label Description */
+.label-description {
+    font-size: 1.1rem;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Progress Bar Container */
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background-color: #f4f4f9;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+}
+
+/* Progress Fill */
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4ca2cd, #67b26f);
+    transition: width 0.5s ease;
+    border-radius: 10px 0 0 10px;
+}
+
+/* Footer */
+footer {
+    margin-top: 30px;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+footer .back-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4ca2cd;
+    color: white;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 1rem;
+    margin-top: 20px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+footer .back-link:hover {
+    background-color: #67b26f;
+    transform: scale(1.05);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.2rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+
+    .results-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .label-description {
+        font-size: 1rem;
+    }
+
+    .progress-bar {
+        height: 15px;
+    }
+}

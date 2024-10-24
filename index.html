@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered Image Labeling</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>PixelSense AI</h1>
+            <p>"Transform your visuals into valuable intelligence with precision-driven AI."</p>
+        </header>
+
+        <section class="form-section">
+            <h2>Analyze Your Image</h2>
+            <form id="imageForm" enctype="multipart/form-data">
+                <input type="file" id="imageUpload" name="image" accept="image/*" required>
+                <img id="previewImage" style="display:none; margin-top: 20px;" width="100%" alt="Image Preview"/>
+                </br>
+                <button type="submit">Analyze Now</button>
+            </form>
+        </section>
+
+        <section class="results-section" id="results" style="display:none;">
+            <h2>Detected Labels</h2>
+            <ul id="labelsList"></ul>
+        </section>
+
+        <footer>
+            <p>&copy; 2024 AI Image Solutions</p>
+        </footer>
+    </div>
+
+    <script>
+        // Preview the uploaded image before submitting
+        document.getElementById('imageUpload').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            const previewImage = document.getElementById('previewImage');
+
+            if (file) {
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    previewImage.src = e.target.result;
+                    previewImage.style.display = 'block';  // Show the preview image
+                };
+
+                reader.readAsDataURL(file);  // Read the image file as a data URL
+            } else {
+                previewImage.style.display = 'none';  // Hide the image preview if no file is selected
+            }
+        });
+
+        // Handle form submission with fetch
+        document.getElementById('imageForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+
+            const response = await fetch('/upload', {
+                method: 'POST',
+                body: formData
+            });
+
+            const data = await response.json();
+            const labelsList = document.getElementById('labelsList');
+            labelsList.innerHTML = '';
+            // Display labels and confidence scores
+            if (data.labels) {
+                data.labels.forEach(label => {
+                    const confidence = (label.score * 100).toFixed(2); // Convert score to percentage
+
+                    // Create list item
+                    const li = document.createElement('li');
+
+                    // Create label description span
+                    const labelDescription = document.createElement('span');
+                    labelDescription.className = 'label-description';
+                    labelDescription.textContent = `${label.description}: ${confidence}%`;
+
+                    // Create progress bar container
+                    const progressBar = document.createElement('div');
+                    progressBar.className = 'progress-bar';
+
+                    // Create progress bar fill with dynamic width
+                    const progressFill = document.createElement('div');
+                    progressFill.className = 'progress-fill';
+                    progressFill.style.width = `${confidence}%`;
+
+                    // Append elements to list item
+                    progressBar.appendChild(progressFill);
+                    li.appendChild(labelDescription);
+                    li.appendChild(progressBar);
+
+                    // Append list item to labels list
+                    labelsList.appendChild(li);
+                });
+            } else {
+                const errorMessage = document.createElement('li');
+                errorMessage.textContent = 'Error: Could not process the image.';
+                labelsList.appendChild(errorMessage);
+            }
+
+            document.getElementById('results').style.display = 'block';  // Show results section
+        });
+    </script>
+
+</body>
+</html>
