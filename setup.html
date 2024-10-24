@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setup Your Google Vision API App</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #4ca2cd;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: #4ca2cd;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        pre {
+            background-color: #f4f4f9;
+            padding: 10px;
+            border-left: 4px solid #4ca2cd;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: monospace;
+            font-size: 1rem;
+        }
+
+        .steps {
+            margin-bottom: 40px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Setup Your Google Vision API App</h1>
+        <p>Follow this step-by-step guide to clone the repository and set up the Google Vision API app on your own.</p>
+
+        <div class="steps">
+            <h2>Step 1: Clone the Repository</h2>
+            <p>First, clone the GitHub repository to your local machine:</p>
+            <pre><code>git clone https://github.com/nithishkumar16/SAAS-Application-Google-Vision-API-GCP.git</code></pre>
+
+            <h2>Step 2: Install Dependencies</h2>
+            <p>Navigate into the project directory and install the required dependencies:</p>
+            <pre><code>cd your-repo
+npm install</code></pre>
+
+            <h2>Step 3: Set Up Google Cloud Platform (GCP)</h2>
+            <p>To use the Google Vision API, you need to set up GCP access:</p>
+            <ul>
+                <li>Go to the <a href="https://console.cloud.google.com/" target="_blank">Google Cloud Console</a>.</li>
+                <li>Create a new project or select an existing project.</li>
+                <li>Enable the Vision API under **API & Services**.</li>
+                <li>Create a service account and download the credentials JSON file.</li>
+            </ul>
+
+            <h2>Step 4: Set Up Environment Variables</h2>
+            <p>Create a `.env` file and add your service account credentials path:</p>
+            <pre><code>GOOGLE_APPLICATION_CREDENTIALS="/path/to/your-service-account-key.json"</code></pre>
+
+            <h2>Step 5: Run the Application</h2>
+            <p>Finally, start the application locally:</p>
+            <pre><code>npm start</code></pre>
+
+            <p>Visit <code>http://localhost:8080</code> in your browser to upload images and test the app.</p>
+
+            <h2>Step 6: Deploy to Google App Engine</h2>
+            <p>To deploy the app to Google App Engine, use the following command:</p>
+            <pre><code>gcloud app deploy</code></pre>
+            <p>Once deployed, visit the provided URL to access your live app.</p>
+        </div>
+
+        <footer>&copy; 2024 Your Company | Documentation</footer>
+    </div>
+
+</body>
+</html>
